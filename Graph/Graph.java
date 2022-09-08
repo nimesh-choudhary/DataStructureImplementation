@@ -1,10 +1,11 @@
-package UndirectedGraph;
+// package UndirectedGraph;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+// using Adjacency List
 public class Graph {
-//	This code is implemented using Adjacency List and valid for Undirected Graph
 	public static void displayList(ArrayList<ArrayList<Integer>> list) {
 		for(int i = 0;i<list.size();i++) {
 			if(i!=0) {
