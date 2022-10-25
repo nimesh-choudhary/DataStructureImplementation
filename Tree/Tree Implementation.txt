@@ -1,0 +1,160 @@
+Binary trees is a like directory that we have in our pc or mobile phones.
+		     		                  node1 -> Root Node
+					                     / \
+		    		                  /   \
+                             /     \
+Ancestor of node 4 & 5 -> node2   node3 -> Leaf Node
+		                      / \
+		                     /   \
+		                    /     \
+	                   node4  node5 -> Leaf Node
+
+
+Leaf node - The node which has 0 children.
+Root node - The topmost node is called as Root Node.
+Ancestor - Parent or grand parent node of a node.
+Binary Tree - A node which have child node less than or equal to 2
+Types of Binary Tree -
+	1. Full Binary Tree
+	2. Complete Binary Tree
+	3. Perfect binary tree
+	4. Balanced Binary Tree
+	5. Degenertate Tree
+
+Full Binary Tree - The tree which has either 2 or 0 children
+Complete Binary Tree - The tree whose levels are completely filled except the last level. In the last level, if node contain only one node then it will not be a complete binary tree
+So in the last level the node should have either 0 or 2
+
+----------------------
+
+Tree Representation
+So we represent the tree using Linked List so for that we need to create the node which holds the value of a node and address of left and right child node.
+So for that we need to create a class as mentioned below-
+public class Node{
+        int data;// value of current node
+        Node left;//which points to the left child node of current node
+        Node right;// which points to the right child node of current node
+        
+        public Node(int key){
+            this.data = key;
+        }
+    }
+
+Binary Tree Traversal
+So in Binary tree traversal there are three types of traversal - 
+1. Inorder traversal
+2. Preorder Traversal
+3. Postorder Traversal
+
+
+Inorder Traversal - In this traversal we first need to visit the left subtree then root and after that right subtree. (Left subtree - Root Node - Right Subtree)
+
+Implementation using Recurrsion
+
+public void inOrder(Node root){
+	if(root == null){
+		return null;
+	}
+	inOrder(root.left);
+	print(root.data);
+	inOrder(root.right);
+	
+}
+
+
+Iterative way to implement Tree
+ArrayList<Integer> inOrder(Node root) {
+        // Code
+        ArrayList<Integer> list = new ArrayList<>();
+        Stack<Node> stack = new Stack<Node>();
+        Node node = root;
+        while(true){
+	/*
+
+First we will create one stack of type Node
+Stack<Node> stack = new Stack<Node>();
+
+so initially we will check whether current node is null or not.
+So if not then we will push into the stack.
+
+
+
+*/
+            if(node!=null){
+                stack.push(node);
+                node = node.left;
+            }
+            else{
+                if(stack.isEmpty()){
+                    break;
+                }
+                node = stack.pop();
+                list.add(node.data);
+                node = node.right;
+            }
+        }
+        return list;
+    }
+
+Preorder Traversal - In this traversal first we need to visit the root node and after this left and then right subtree. (Root Node - Left subtree - Right Subtree)
+
+Recurrsive Way of Preorder Traversal
+
+public void preOrder(Node root){
+	if(root == null) return null;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Iterative Way of Preorder Traversal
+
+
+So in this first we will create the Stack and also push the root node into stack.
+Now we will assign the root equals to stack.pop();
+After this we will check whether root.left or root.right is null or not.
+So after this first we will add root.right one and after that root.left node.
+So first we need to visit the left subtree not right subtree.
+
+static ArrayList<Integer> preorder(Node root)
+    {
+        // Code here
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        if(root == null){
+            return list;
+        }
+        Stack<Node> stack = new Stack<Node>();
+        // Node node = root;
+        stack.push(root);
+        while(!stack.isEmpty()){
+            root = stack.pop();
+            list.add(root.data);
+            if(root.right!=null){
+                stack.push(root.right);
+            }
+            if(root.left!=null){
+                stack.push(root.left);
+            }
+        }
+        return list;
+    }
+Postorder Traversal - In this traversal first we need to visit the left subtree then right subtree and after that root node in the last. (Left Subtree - Right Subtree - Root Node)
+
+
